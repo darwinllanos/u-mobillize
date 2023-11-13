@@ -1,0 +1,17 @@
+Copy code
+<!-- templates/capturar_viaje.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Capturar Viaje</title>
+</head>
+<body>
+    <h2>Capturar Viaje</h2>
+    <form method="post" action="{% url 'capturar_viaje' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

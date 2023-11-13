@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        body {
+            background-image: url(../static/fondo.jpg);
+            background-repeat: repeat;
+            background-size: contain;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            background-color: #333;
+            padding: 20px;
+            box-sizing: border-box;
+            color: white;
+            float: left; /* Añadido para que la barra lateral esté a la izquierda */
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        #profileImage {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        select {
+            margin-top: 20px;
+            padding: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .barra {
+            background-color: black;
+            padding: 1%;
+        }
+
+        .col {
+            margin-left: 200px; /* Añadido para dejar espacio para la barra lateral */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fondo"></div>
+    <header>
+        <div class="">
+            <div class="container ">
+                <!--Contiene todo el encabezado, Aca empieza ell header.html-->
+                <nav class="navbar navbar-inverse navbar-fixed-top ">
+                    <div class="collapse navbar-collapse lbarra" id="navbar-1">
+                        <!--Incluye todo el encabezado desde logo cuadrado hasta codigo qr-->
+                        <div class="barra">
+                            <a href="../static/logo.png">
+                                <img title="Ferreteria jrc logo" alt="Ferreteria jrc logo" class="img-responsive"
+                                    src="../static/logo.png" height="45" width="50" style="margin-left: 725px;">
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="row">
+                <div class="sidebar col-3">
+                    <div class="profile">
+                        <input type="" id="fileInput" accept="image/*" style="display: none;">
+                        <img src="../static/jhon.jpg" id="profileImage" alt="Profile Picture">
+                        <div id="name"></div>
+                        <div id="id"></div>
+                        <select id="role">
+                            <option value="pasajero">Pasajero</option>
+                            <option value="conductor">Conductor</option>
+                        </select>
+                        <ul>
+                            <li style="list-style: none;">
+                                <a href="/logout" style="text-decoration: none; color: white;"> Cerrar sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+                    <div id="map" style="height: 580px;"></div>
+                    <script src="js/main.js" type="module"></script>
+                    <script
+                        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+                        crossorigin="anonymous"></script>
+
+                    <script>
+                        var map = L.map('map').setView(["4.655527", "-74.100992"], 16);
+
+                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            maxZoom: 19,
+                            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        }).addTo(map);
+                    </script>
+                </div>
+            </div>
+    </header>
+</body>
+
+<script>
+    const fileInput = document.getElementById("fileInput");
+    const profileImage = document.getElementById("profileImage");
+    const nameElement = document.getElementById("name");
+    const idElement = document.getElementById("id");
+    const roleSelect = document.getElementById("role");
+
+    fileInput.addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function () {
+            profileImage.src = reader.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+    function updateProfile() {
+        const name = "Jhon Darwin Llanos Narvaez";//prompt("Enter your name:");"
+        const id = "764310";//prompt("Enter your ID:");
+
+        nameElement.textContent = "Name: " + name;
+        idElement.textContent = "ID: " + id;
+    }
+    updateProfile()
+</script>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+</html>

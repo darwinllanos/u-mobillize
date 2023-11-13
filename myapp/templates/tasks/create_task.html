@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>Create a new Task</h1>
+
+<!--Este seria un ejemplo de crear formulario con DJANGO HTML-->
+<!--<input type="text">
+#<textarea name="description" id="" cols="30" rows="10"></textarea>-->
+
+<!--Python nos ofrece otra opcion de crear formulario, y ambas sirven-->
+<form method="POST">
+    {% csrf_token %}<!--#Token para que los datos del formulario puedan ser enviados-->
+    {{form.as_p}}<!--El as_p no es necesario, solo permite que el contenido se ajuste no al lado si no en la parte de abajo-->
+    <button>
+        Save
+    </button>
+</form>
+
+{% endblock %}
+

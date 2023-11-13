@@ -1,0 +1,13 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %} <!--Nos permite mportar como una libreria que permitira caragar el contenido estatico-->
+
+{% block content %}
+
+<!--<h1>Welcome to Django App</h1>-->
+<h1>{{ title }}</h1>
+
+<img src="{% static 'img.png' %}" alt="" width="70"><!--Esto contaria como contenido estatico-->
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit voluptatibus quos rem culpa quasi quo voluptate earum sequi nesciunt, enim obcaecati aspernatur atque commodi officiis, reiciendis maiores, unde nulla quibusdam.</p>
+{% endblock %}
